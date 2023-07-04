@@ -13,12 +13,20 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $Customer = factory(Customer::class, 250)->make();
+        /*$query = Customer::query();
+        $query->limit(10);
+        $query->orderBy('CustName');
+        $query->when($request->input('q'), function ($q) use ($request) {
+            return $q->where('CustName', 'like', '%'.$request->input('q').'%');
+        });
+        $customer = $query->get();
+        foreach( $customer as $cust ){
+            echo '<p>'.$cust->CustName.'</p>';
+        }*/
 
-        $customer = DB::table('customer')->get();
-        print_r($customer);
+        return view('customer');
     }
 
     /**
