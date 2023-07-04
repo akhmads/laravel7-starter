@@ -15,6 +15,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
+        $Customer = factory(Customer::class, 250)->make();
+
         $customer = DB::table('customer')->get();
         print_r($customer);
     }
