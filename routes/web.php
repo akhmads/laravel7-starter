@@ -17,4 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/customer', 'CustomerController@index')->name('customer');
+Route::match(['get', 'post'], '/customer', 'CustomerController@index')->name('customer');

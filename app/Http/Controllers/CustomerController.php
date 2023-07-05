@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use DataTables;
 
 class CustomerController extends Controller
 {
@@ -25,6 +26,21 @@ class CustomerController extends Controller
         foreach( $customer as $cust ){
             echo '<p>'.$cust->CustName.'</p>';
         }*/
+
+        /**
+         * Datasource for datatables via ajax request.
+         *
+         * @return json
+         */
+        if ($request->ajax()) {
+            $model = Customer::query();
+            return DataTables::eloquent($model)
+                ->addIndexColumn()
+                ->editColumn('created_at', function(Customer $customer) {
+                    return date('d-m-y, H:i',strtotime($customer->created_at));
+                })
+                ->toJson();
+        }
 
         return view('customer');
     }
