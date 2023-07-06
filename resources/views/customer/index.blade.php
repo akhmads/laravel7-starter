@@ -7,10 +7,9 @@
 
 @section('content')
     <?php /*<x-alert message="Hoorrayyyy" type="danger" title="Error Cooy !!!" />*/ ?>
+    <x-sweetalert title="Success" text="Magic !!!" icon="success" />
     @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
+    <x-sweetalert title="Success" text="{{ $message }}" icon="success" />
     @endif
     <div class="card">
         <div class="card-header header-elements">

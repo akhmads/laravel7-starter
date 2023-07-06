@@ -12,6 +12,7 @@
 <!-- Vendors JS -->
 <script src="{{ url('assets/vendor/libs/moment/moment.js') }}"></script>
 <script src="{{ url('assets/vendor/libs/flatpickr/flatpickr.js') }}"></script>
+<script src="{{ url('assets/vendor/libs/sweetalert2/sweetalert2.js') }}"></script>
 
 @if( in_array('datatables',$vendor) )
 <script src="{{ url('assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js') }}"></script>
