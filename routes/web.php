@@ -18,3 +18,5 @@ Route::get('/', function () {
 });
 
 Route::match(['get', 'post'], '/customer', 'CustomerController@index')->name('customer');
+Route::get('/customer/create', 'CustomerController@create')->name('customer.create');
+Route::put('/customer/store', 'CustomerController@store')->name('customer.store');

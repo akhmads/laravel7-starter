@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Core head -->
-  @include('layouts.partials.head')
+  @include('layouts.partials.head', ['vendor' => isset($vendor)?$vendor:[]])
   
   <!-- head stack -->
   @stack('head')
@@ -208,7 +208,7 @@
   <!-- / Layout wrapper -->
 
 <!-- Core script -->  
-@include('layouts.partials.script')
+@include('layouts.partials.script', ['vendor' => isset($vendor)?$vendor:[]])
 
 <!-- Stackscript-->
 @stack('scripts')

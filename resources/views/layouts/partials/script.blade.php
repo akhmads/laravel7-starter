@@ -10,9 +10,12 @@
 <!-- endbuild -->
 
 <!-- Vendors JS -->
-<script src="{{ url('assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js') }}"></script>
 <script src="{{ url('assets/vendor/libs/moment/moment.js') }}"></script>
 <script src="{{ url('assets/vendor/libs/flatpickr/flatpickr.js') }}"></script>
+
+@if( in_array('datatables',$vendor) )
+<script src="{{ url('assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js') }}"></script>
+@endif
 
 <!-- Main JS -->
 <script src="{{ url('assets/js/main.js') }}"></script>

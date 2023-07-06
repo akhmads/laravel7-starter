@@ -16,12 +16,12 @@ class CreateCustomerTable extends Migration
         Schema::create('customer', function (Blueprint $table) {
             $table->bigIncrements('CustID');
             $table->string('CustName',100);
-            $table->string('CustContactName',100);
-            $table->string('CustAddress',250);
-            $table->string('CustPhone',50);
-            $table->string('CustMobile',50);
-            $table->string('CustEmail',50);
-            $table->string('CustNote',250);
+            $table->string('CustContactName',100)->nullable()->default("");
+            $table->string('CustAddress',250)->nullable()->default("");
+            $table->string('CustPhone',50)->nullable()->default("");
+            $table->string('CustMobile',50)->nullable()->default("");
+            $table->string('CustEmail',50)->nullable()->default("");
+            $table->string('CustNote',250)->nullable()->default("");
             $table->timestamps();
             $table->index('CustName');
         });

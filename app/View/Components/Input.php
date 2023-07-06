@@ -7,36 +7,60 @@ use Illuminate\View\Component;
 class Input extends Component
 {
     /**
-     * The alert type.
+     * The input name
+     *
+     * @var string
+     */
+    public $name;
+
+    /**
+     * The input value
+     *
+     * @var string
+     */
+    public $value;
+
+    /**
+     * The input type
      *
      * @var string
      */
     public $type;
- 
-    /**
-     * The alert message.
-     *
-     * @var string
-     */
-    public $message;
 
     /**
-     * The alert title.
+     * The input wrapper.
      *
      * @var string
      */
-    public $title;
+    public $wrap;
+
+    /**
+     * The input label.
+     *
+     * @var string
+     */
+    public $label;
+
+    /**
+     * The input classes.
+     *
+     * @var string
+     */
+    public $class;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct( $type, $message, $title = '' )
+    public function __construct( $name="", $value="", $type = "text", $wrap = "h", $label = "", $class = "" )
     {
+        $this->name = $name;
+        $this->value = $value;
         $this->type = $type;
-        $this->message = $message;
-        $this->title = $title;
+        $this->wrap = $wrap;
+        $this->label = $label;
+        $this->class = $class;
     }
 
     /**

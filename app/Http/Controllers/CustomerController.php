@@ -42,7 +42,7 @@ class CustomerController extends Controller
                 ->toJson();
         }
 
-        return view('customer');
+        return view('customer.index');
     }
 
     /**
@@ -52,7 +52,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return view('customer.form');
     }
 
     /**
@@ -63,7 +63,14 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'CustName' => 'required',
+            'CustContactName' => 'required',
+        ]);
+
+        Customer::create($request->post());
+
+        return redirect()->route('customer')->with('success','Customer has been created successfully.');
     }
 
     /**
@@ -74,7 +81,7 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
-        //
+        return view('customer.show');
     }
 
     /**
@@ -85,7 +92,7 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        //
+        return view('customer.form');
     }
 
     /**

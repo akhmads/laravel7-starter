@@ -1,15 +1,22 @@
 
-@extends('layouts.main')
+@extends('layouts.main', [
+    'vendor' => ['datatables']
+])
 
 @section('title', 'Customer')
 
 @section('content')
-    <x-input type="danger" title="Error Cooy !!!" message="Hoorrayyyy" />
+    <?php /*<x-alert message="Hoorrayyyy" type="danger" title="Error Cooy !!!" />*/ ?>
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
     <div class="card">
         <div class="card-header header-elements">
             <h2 class="mt-3 me-4 mb-3 text-muted fw-light">Customer</h2>
             <div class="card-title-elements">
-                <button type="button" class="btn btn-primary"><i class="fa fa-plus me-2"></i>Add New</button>
+                <a href="{{ route('customer.create') }}" class="btn btn-primary"><i class="fa fa-plus me-2"></i>Add New</a>
             </div>
         </div>
         <div class="card-datatable table-responsive">
