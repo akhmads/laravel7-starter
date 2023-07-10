@@ -91,7 +91,7 @@
         <ul class="menu-inner py-1">
           <!-- Page -->
           <li class="menu-item active">
-            <a href="{{ route('customer') }}" class="menu-link">
+            <a href="{{ route('customer.index') }}" class="menu-link">
               <i class="menu-icon tf-icons bx bx-home-circle"></i>
               <div data-i18n="Customer">Customer</div>
             </a>
@@ -189,14 +189,11 @@
             
             @yield('content')
 
-          </div>
-          <!-- / Content -->
+          </div><!-- /Content -->
 
           <div class="content-backdrop fade"></div>
-        </div>
-        <!-- Content wrapper -->
-      </div>
-      <!-- / Layout page -->
+        </div><!-- /Content wrapper -->
+      </div><!-- /Layout page -->
     </div>
 
     <!-- Overlay -->
@@ -204,8 +201,7 @@
 
     <!-- Drag Target Area To SlideIn Menu On Small Screens -->
     <div class="drag-target"></div>
-  </div>
-  <!-- / Layout wrapper -->
+  </div><!-- /Layout wrapper -->
 
 <!-- Core script -->  
 @include('layouts.partials.script', ['vendor' => isset($vendor)?$vendor:[]])

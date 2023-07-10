@@ -39,6 +39,12 @@ class CustomerController extends Controller
                 ->editColumn('created_at', function(Customer $customer) {
                     return date('d-m-y, H:i',strtotime($customer->created_at));
                 })
+                ->addColumn('edit_url', function(Customer $customer) {
+                    return route('customer.edit',$customer->CustID);
+                })
+                ->addColumn('delete_url', function(Customer $customer) {
+                    return route('customer.delete',$customer->CustID);
+                })
                 ->toJson();
         }
 
@@ -52,7 +58,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view('customer.form');
+        return view('customer.create');
     }
 
     /**
@@ -81,7 +87,7 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
-        return view('customer.show');
+        return view('customer.show', compact('customer'));
     }
 
     /**
@@ -92,7 +98,8 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        return view('customer.form');
+        #$customer = Customer::find($id);
+        return view('customer.edit',compact('customer'));
     }
 
     /**
@@ -104,7 +111,14 @@ class CustomerController extends Controller
      */
     public function update(Request $request, Customer $customer)
     {
-        //
+        $request->validate([
+            'CustName' => 'required',
+            'CustContactName' => 'required',
+        ]);
+
+        $customer->fill($request->post())->save();
+
+        return redirect()->route('customer.index')->with('success','Customer has been updated successfully.');
     }
 
     /**
@@ -115,6 +129,7 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
-        //
+        $customer->delete();
+        return redirect()->route('customer.index')->with('success', 'Customer has been deleted.');
     }
 }

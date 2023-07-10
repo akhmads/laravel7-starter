@@ -8,7 +8,7 @@
 @section('content')
     <?php /*<x-alert message="Hoorrayyyy" type="danger" title="Error Cooy !!!" />*/ ?>
     @if ($message = Session::get('success'))
-    <x-sweetalert title="Success" text="{{ $message }}" icon="success" />
+    <x-sweetalert title="Wow, Great Job !!!" text="{{ $message }}" icon="success" />
     @endif
     <div class="card">
         <div class="card-header header-elements">
@@ -78,10 +78,13 @@
                         '<li><a href="javascript:;" class="dropdown-item">Show</a></li>' +
                         '<li><a href="javascript:;" class="dropdown-item">Update</a></li>' +
                         '<div class="dropdown-divider"></div>' +
-                        '<li><a href="javascript:;" class="dropdown-item text-danger delete-record">Delete</a></li>' +
+                        '<form action="'+full.delete_url+'" method="POST">' +
+                        '<li><button type="submit" class="dropdown-item text-danger" onclick="this.form.submit()">Delete</button></li>' +
+                        '@csrf @method("DELETE")' +
+                        '</form>' +
                         '</ul>' +
                         '</div>' +
-                        '<a href="{{ route("customer.edit") }}/'+full.CustID+'" class="btn btn-sm btn-icon item-edit"><i class="bx bxs-edit"></i></a>'
+                        '<a href="'+full.edit_url+'" class="btn btn-sm btn-icon item-edit"><i class="bx bxs-edit"></i></a>'
                         );
                     }
                 }],

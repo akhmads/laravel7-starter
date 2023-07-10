@@ -17,7 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::match(['get', 'post'], '/customer', 'CustomerController@index')->name('customer');
-Route::get('/customer/create', 'CustomerController@create')->name('customer.create');
-Route::put('/customer/store', 'CustomerController@store')->name('customer.store');
-Route::get('/customer/edit/{id?}', 'CustomerController@edit')->name('customer.edit');
+Route::match(['get', 'post'], '/customer', 'CustomerController@index')->name('customer.index');
+//Route::get('/customer/{id}', 'CustomerController@show')->name('customer.show');
+Route::get('customer/create', 'CustomerController@create')->name('customer.create');
+Route::post('customer/store', 'CustomerController@store')->name('customer.store');
+Route::get('customer/{customer}/edit', 'CustomerController@edit')->name('customer.edit');
+Route::put('customer/{customer}', 'CustomerController@update')->name('customer.update');
+Route::delete('customer/{customer}', 'CustomerController@destroy')->name('customer.delete');
+
+//Route::resource('customer','CustomerController');
+//Route::post('customer', 'CustomerController@index');
