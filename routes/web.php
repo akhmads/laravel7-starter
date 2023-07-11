@@ -18,12 +18,12 @@ Route::get('/', function () {
 });
 
 Route::match(['get', 'post'], '/customer', 'CustomerController@index')->name('customer.index');
-//Route::get('/customer/{id}', 'CustomerController@show')->name('customer.show');
+Route::get('/customer/{customer}', 'CustomerController@show')->name('customer.show');
 Route::get('customer/create', 'CustomerController@create')->name('customer.create');
 Route::post('customer/store', 'CustomerController@store')->name('customer.store');
 Route::get('customer/{customer}/edit', 'CustomerController@edit')->name('customer.edit');
 Route::put('customer/{customer}', 'CustomerController@update')->name('customer.update');
-Route::delete('customer/{customer}', 'CustomerController@destroy')->name('customer.delete');
+Route::delete('customer/{customer}', 'CustomerController@destroy')->name('customer.destroy');
 
-//Route::resource('customer','CustomerController');
-//Route::post('customer', 'CustomerController@index');
+Route::resource('contact','ContactController');
+Route::post('contact/json', 'ContactController@json')->name('contact.json');

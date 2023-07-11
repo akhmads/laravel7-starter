@@ -43,7 +43,7 @@ class CustomerController extends Controller
                     return route('customer.edit',$customer->CustID);
                 })
                 ->addColumn('delete_url', function(Customer $customer) {
-                    return route('customer.delete',$customer->CustID);
+                    return route('customer.destroy',$customer->CustID);
                 })
                 ->toJson();
         }

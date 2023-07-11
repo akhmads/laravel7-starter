@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Contact;
 use DataTables;
 
-class CustomerController extends Controller
+class ContactController extends Controller
 {
     public function index(Request $request)
+    {
+        return view('contact.index');
+    }
+
+    public function json(Request $request)
     {
         // datatable source via ajax
         if ($request->ajax()) {
@@ -22,13 +26,11 @@ class CustomerController extends Controller
                 ->addColumn('edit_url', function(Contact $contact) {
                     return route('contact.edit',$contact->id);
                 })
-                ->addColumn('delete_url', function(Contact $contact) {
+                ->addColumn('destroy_url', function(Contact $contact) {
                     return route('contact.delete',$contact->id);
                 })
                 ->toJson();
         }
-
-        return view('contact.index');
     }
 
     public function create()
@@ -39,13 +41,12 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'Name' => 'required',
-            'ContactName' => 'required',
+            'name' => 'required',
+            'contact_name' => 'required',
         ]);
 
         Contact::create($request->post());
-
-        return redirect()->route('contact')->with('success','Contact has been created successfully.');
+        return redirect()->route('contact.index')->with('success','Contact has been created successfully.');
     }
 
     public function show(Contact $contact)
@@ -66,7 +67,6 @@ class CustomerController extends Controller
         ]);
 
         $contact->fill($request->post())->save();
-
         return redirect()->route('contact.index')->with('success','Contact has been updated successfully.');
     }
 
