@@ -14,4 +14,15 @@
         </div>
     </div>
 @endif
+
+@if( $wrap == 'v' )
+<div class="mb-3">
+    <label class="form-label">{{ $label }}</label>
+    <input type="{{ $type }}" name="{{ $name }}" value="{{ old($name,$value) }}" class="form-control @error($name) is-invalid @enderror {{ $class }}" {{ $attributes }} />
+    @error($name)
+    <div class="text-danger mt-1 mb-1" style="font-size:85%;">{{ $message }}</div>
+    @enderror
+</div>
+@endif
+
 <?php /*@error('title') is-invalid @enderror*/ ?>

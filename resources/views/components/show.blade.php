@@ -11,3 +11,10 @@
         </div>
     </div>
 @endif
+
+@if( $wrap == 'v' )
+<div class="mb-3">
+    <label class="form-label">{{ $label }}</label>
+    <input type="text"  value="{{ $value }}" {{ $attributes->merge(['class' => 'form-control-plaintext']) }} />
+</div>
+@endif

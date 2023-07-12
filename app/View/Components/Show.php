@@ -32,7 +32,7 @@ class Show extends Component
      *
      * @return void
      */
-    public function __construct( $value="", $wrap = "h", $label = "" )
+    public function __construct( $value="", $wrap = "v", $label = "" )
     {
         $this->value = $value;
         $this->wrap = $wrap;

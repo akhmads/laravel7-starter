@@ -71,6 +71,7 @@
                     searchable: false,
                     render: function (data, type, full, meta) {
                         return (
+                        '<a href="'+full.edit_url+'" class="btn btn-sm btn-icon item-edit"><i class="fa-solid fa-pen-to-square"></i></a>' +
                         '<div class="d-inline-block">' +
                         '<a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></a>' +
                         '<ul class="dropdown-menu dropdown-menu-end m-0">' +
@@ -81,8 +82,7 @@
                         '@csrf @method("DELETE")' +
                         '</form>' +
                         '</ul>' +
-                        '</div>' +
-                        '<a href="'+full.edit_url+'" class="btn btn-sm btn-icon item-edit"><i class="bx bxs-edit"></i></a>'
+                        '</div>'
                         );
                     }
                 }],

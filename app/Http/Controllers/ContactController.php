@@ -23,11 +23,14 @@ class ContactController extends Controller
                 ->editColumn('created_at', function(Contact $contact) {
                     return date('d-m-y, H:i',strtotime($contact->created_at));
                 })
+                ->addColumn('show_url', function(Contact $contact) {
+                    return route('contact.show',$contact->id);
+                })
                 ->addColumn('edit_url', function(Contact $contact) {
                     return route('contact.edit',$contact->id);
                 })
                 ->addColumn('destroy_url', function(Contact $contact) {
-                    return route('contact.delete',$contact->id);
+                    return route('contact.destroy',$contact->id);
                 })
                 ->toJson();
         }
