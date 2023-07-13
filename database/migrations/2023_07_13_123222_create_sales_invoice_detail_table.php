@@ -15,6 +15,11 @@ class CreateSalesInvoiceDetailTable extends Migration
     {
         Schema::create('sales_invoice_detail', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('sales_invoice_id');
+            $table->string('item_name',100);
+            $table->integer('price')->nullable('0');
+            $table->integer('qty')->nullable('0');
+            $table->integer('subtotal')->nullable('0');
             $table->timestamps();
         });
     }
