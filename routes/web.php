@@ -27,3 +27,12 @@ Route::delete('customer/{customer}', 'CustomerController@destroy')->name('custom
 
 Route::resource('contact','ContactController');
 Route::post('contact/json', 'ContactController@json')->name('contact.json');
+
+// Auth
+Route::get('/login', 'Auth\LoginController@index')->middleware('guest')->name('login.index');
+Route::post('/login', 'Auth\LoginController@authenticate');
+Route::delete('/logout', 'Auth\LoginController@logout');
+
+Route::prefix('/admin')->group(function () {
+    Route::get('/home', 'HomeController@index');
+});

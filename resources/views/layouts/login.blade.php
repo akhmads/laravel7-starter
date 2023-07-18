@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
 
   <!-- Core head -->
-  @include('admin.partials.head', ['vendor' => isset($vendor)?$vendor:[]])
+  @include('partials.head', ['vendor' => isset($vendor)?$vendor:[]])
   
   <!-- head stack -->
   @stack('head')
@@ -44,13 +44,23 @@
               </a>
             </div>
             <!-- /Logo -->
-            {{-- <h4 class="mb-2">Welcome to Sneat! 👋</h4>
-            <p class="mb-4">Please sign-in to your account and start the adventure</p> --}}
+           
+            @if(session('success'))
+            <div class="bg-white shadow-sm p-5 border-l-4 border-green-500">
+                <span class="font-medium text-green-500 text-base">{{ session('success') }}</span>
+            </div>
+            @endif
+            @if(session('error'))
+            <div class="bg-white shadow-sm p-5 border-l-4 border-red-500">
+                <span class="font-medium text-red-500 text-base">{{ session('error') }}</span>
+            </div>
+            @endif
 
             <form class="mb-3" action="{{ url('/login') }}" method="POST">
+              @csrf
               <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="text" value="{{ old('email') }}" class="form-control" name="email-username" placeholder="Enter your email or username" autofocus />
+                <input type="text" value="{{ old('email') }}" class="form-control" name="email" placeholder="Enter your email" autofocus />
               </div>
               <div class="mb-3 form-password-toggle">
                 <div class="d-flex justify-content-between">
