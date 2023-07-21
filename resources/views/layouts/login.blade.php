@@ -23,7 +23,7 @@
 
   <link rel="stylesheet" href="{{ url('assets/vendor/css/pages/page-auth.css') }}" />
 
-  <title>App Name - @yield('title')</title>
+  <title>@config('app.name') - @yield('title')</title>
 </head>
 <body>
 
