@@ -11,7 +11,7 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return view('admin.login');
+        return view('login');
     }
 
     public function authenticate(Request $request)
@@ -24,7 +24,7 @@ class LoginController extends Controller
         $isRememberMe = $request->post('remember-me') ? true : false;
         if (Auth::attempt($credentials, $isRememberMe)) {
             $request->session()->regenerate();
-            return redirect()->intended('/admin/home');
+            return redirect()->intended('/admin');
         }
 
         return back()->with('error', 'Login failed!');

@@ -1,33 +1,11 @@
-<!doctype html>
-<html
-  lang="en"
-  class="light-style layout-navbar-fixed layout-menu-fixed"
-  dir="ltr"
-  data-theme="theme-default"
-  data-assets-path="{{ url('assets') }}/"
-  data-template="vertical-menu-template-starter"
->
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
 
-  <!-- Core head -->
-  @include('partials.head', ['vendor' => isset($vendor)?$vendor:[]])
-  
-  <!-- head stack -->
-  @stack('head')
+@extends('layouts.app')
 
-  <link rel="stylesheet" href="{{ url('assets/vendor/css/pages/page-auth.css') }}" />
+@push('head')
+<link rel="stylesheet" href="{{ url('assets/vendor/css/pages/page-auth.css') }}" />
+@endpush
 
-  <title>@config('app.name') - @yield('title')</title>
-</head>
-<body>
-
-<!-- Content -->
+@section('content')
 <div class="container-xxl">
     <div class="authentication-wrapper authentication-basic container-p-y">
       <div class="authentication-inner">
@@ -37,10 +15,11 @@
             <!-- Logo -->
             <div class="app-brand justify-content-center">
               <a href="index.html" class="app-brand-link gap-2">
-                <span class="app-brand-logo demo">
+                {{-- <span class="app-brand-logo demo">
                     @include('admin.partials.logo')
                 </span>
-                <span class="app-brand-text demo text-body fw-bolder">Hypercode</span>
+                <span class="app-brand-text demo text-body fw-bolder">Hypercode</span> --}}
+                <img src="{{ url('assets/images/logo.svg') }}" alt="Logo" />
               </a>
             </div>
             <!-- /Logo -->
@@ -98,5 +77,4 @@
       </div>
     </div>
   </div>
-
-  <!-- / Content -->
+  @endsection
