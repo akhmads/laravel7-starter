@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +30,21 @@ Route::resource('contact','ContactController');
 Route::post('contact/json', 'ContactController@json')->name('contact.json');
 
 // Auth
-Route::get('/login', 'Auth\LoginController@index')->middleware('guest')->name('login.index');
-Route::post('/login', 'Auth\LoginController@authenticate');
-Route::delete('/logout', 'Auth\LoginController@logout');
+Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login.index');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::get('/logout', [LoginController::class, 'logout']);
+
+Route::middleware(['auth'])->group(function () {
+    
+    Route::get('/admin', 'HomeController@index');
+    // admin prefix
+    Route::prefix('/admin')->group(function () {
+        
+        Route::get('/index', 'HomeController@index');
+
+    });
+
+});
 
 Route::prefix('/admin')->group(function () {
     Route::get('/home', 'HomeController@index');
