@@ -14,7 +14,7 @@
           <div class="card-body">
             <!-- Logo -->
             <div class="app-brand justify-content-center">
-              <a href="index.html" class="app-brand-link gap-2">
+              <a href="{{ url('/login') }}" class="app-brand-link gap-2">
                 <span class="app-brand-logo demo">
                     <img src="{{ url('assets/img/logo.svg') }}" alt="Logo" style="height:50px;" />
                 </span>
@@ -24,16 +24,21 @@
             </div>
             <!-- /Logo -->
            
+             <!-- Alert Message -->
             @if(session('success'))
-            <div class="bg-white shadow-sm p-5 border-l-4 border-green-500">
-                <span class="font-medium text-green-500 text-base">{{ session('success') }}</span>
+            <div class="alert alert-success alert-dismissible" role="alert">
+              {{ session('success') }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             @endif
+
             @if(session('error'))
-            <div class="bg-white shadow-sm p-5 border-l-4 border-red-500">
-                <span class="font-medium text-red-500 text-base">{{ session('error') }}</span>
+            <div class="alert alert-danger alert-dismissible" role="alert">
+              {{ session('error') }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             @endif
+            <!-- /Alert Message -->
 
             <form class="mb-3" action="{{ url('/login') }}" method="POST">
               @csrf
@@ -71,13 +76,6 @@
                 <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
               </div>
             </form>
-
-            {{-- <p class="text-center">
-              <span>New on our platform?</span>
-              <a href="auth-register-basic.html">
-                <span>Create an account</span>
-              </a>
-            </p> --}}
 
           </div>
         </div>
