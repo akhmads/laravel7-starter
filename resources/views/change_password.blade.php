@@ -26,7 +26,8 @@
             </div>
             <!-- /Logo -->
            
-            <h2 class="mb-3">Change Password</h2>
+            <h3 class="mb-3 text-center">Change Password</h3>
+            <p class="fs-6 lh-1 text-secondary">Password must contain lowercase letters, uppercase letters and numbers.</p>
 
             <!-- Alert Message -->
             @if(session('success'))
@@ -74,13 +75,13 @@
 
               <div class="mb-3 form-password-toggle">
                 <div class="d-flex justify-content-between">
-                  <label class="form-label" for="confirm_new_password">New Password</label>
+                  <label class="form-label" for="new_password_confirmation">New Password</label>
                 </div>
                 <div class="input-group input-group-merge">
-                  <input type="password" class="form-control" name="confirm_new_password" id="confirm_new_password" value="{{ old('confirm_new_password') }}" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
+                  <input type="password" class="form-control" name="new_password_confirmation" id="new_password_confirmation" value="{{ old('new_password_confirmation') }}" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
                   <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                 </div>
-                @error('confirm_new_password')
+                @error('new_password_confirmation')
                   <div class="d-block invalid-feedback">
                     {{ $message }}
                   </div>                         
@@ -90,6 +91,7 @@
               <div class="mb-3">
                 <button class="btn btn-primary d-grid w-100" type="submit">Change Password</button>
               </div>
+              <p class="text-center text-sm"><a href="{{ url('/admin') }}">Back to homepage</a></p>
             </form>
 
           </div>
