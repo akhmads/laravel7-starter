@@ -35,7 +35,7 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::middleware(['auth'])->group(function(){
-    
+    Route::get('/home', 'HomeController@index');
     Route::get('/admin', 'HomeController@index');
     // admin prefix
     Route::prefix('/admin')->group(function(){
@@ -43,7 +43,6 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/index', 'HomeController@index');
 
     });
-
 });
 
 Route::prefix('/admin')->group(function () {
