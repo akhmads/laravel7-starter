@@ -26,23 +26,30 @@ Route::get('customer/{customer}/edit', 'CustomerController@edit')->name('custome
 Route::put('customer/{customer}', 'CustomerController@update')->name('customer.update');
 Route::delete('customer/{customer}', 'CustomerController@destroy')->name('customer.destroy');
 
-Route::resource('contact','ContactController');
-Route::post('contact/json', 'ContactController@json')->name('contact.json');
-
 // Auth
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::middleware(['auth'])->group(function(){
+    
     Route::get('/home', 'HomeController@index');
     Route::get('/admin', 'HomeController@index');
+    
     // admin prefix
     Route::prefix('/admin')->group(function(){
 
         Route::get('/index', 'HomeController@index');
 
     });
+
+    // users
+    Route::resource('user','UserController');
+    Route::post('user/json', 'UserController@json')->name('user.json');
+    
+    // contact
+    Route::resource('contact','ContactController');
+    Route::post('contact/json', 'ContactController@json')->name('contact.json');
 });
 
 Route::prefix('/admin')->group(function () {
