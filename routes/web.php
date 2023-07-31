@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\ChangePasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +35,9 @@ Route::get('/logout', [LoginController::class, 'logout']);
 Route::middleware(['auth'])->group(function(){
     
     Route::get('/home', 'HomeController@index');
-    Route::get('/admin', 'HomeController@index');
+    Route::get('/admin', 'HomeController@index')->name('admin.index');
+    Route::get('/change_password', [ChangePasswordController::class, 'index'])->name('change_password.index');
+    Route::post('/change_password', [ChangePasswordController::class, 'update']);
     
     // admin prefix
     Route::prefix('/admin')->group(function(){

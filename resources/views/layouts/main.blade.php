@@ -17,7 +17,7 @@
   <!-- head stack -->
   @stack('head')
 
-  <title>App Name - @yield('title')</title>
+  <title>{{ config('app.name', 'Hypercode') }} - @yield('title')</title>
 </head>
 <body>
 
@@ -43,15 +43,19 @@
           </div><!-- /Content -->
 
           <div class="content-backdrop fade"></div>
+
         </div><!-- /Content wrapper -->
+
       </div><!-- /Layout page -->
-    </div>
+
+    </div><!-- /Layout container -->
 
     <!-- Overlay -->
     <div class="layout-overlay layout-menu-toggle"></div>
 
     <!-- Drag Target Area To SlideIn Menu On Small Screens -->
     <div class="drag-target"></div>
+    
   </div><!-- /Layout wrapper -->
 
 <!-- Core script -->  

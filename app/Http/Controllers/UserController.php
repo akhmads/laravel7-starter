@@ -49,9 +49,9 @@ class UserController extends Controller
             'password' => ['required','string','min:8',
                 'regex:/[a-z]/',
                 'regex:/[A-Z]/',
-                'regex:/[a-z]/',
                 'regex:/[0-9]/',
-                'regex:/[@$!%*#?&]/'],
+                //'regex:/[@$!%*#?&]/'],
+            ]
         ]);
 
         User::create($request->post());

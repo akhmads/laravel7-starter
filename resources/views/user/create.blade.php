@@ -21,7 +21,8 @@
             </div>
         </div>
         <div class="text-center">
-            <button type="submit" class="btn btn-primary"><i class="fa fa-save me-3"></i> Save</button>
+            <a href="{{ route('user.index') }}" class="btn btn-warning me-2"><i class="fa fa-arrow-left me-2"></i> Back</a>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-save me-2"></i> Save</button>
         </div>
     </div>
 </div>

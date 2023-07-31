@@ -21,7 +21,7 @@
   <!-- head stack -->
   @stack('head')
 
-  <title>App Name - @yield('title')</title>
+  <title>{{ config('app.name', 'Hypercode') }} - @yield('title')</title>
 </head>
 <body>
 
