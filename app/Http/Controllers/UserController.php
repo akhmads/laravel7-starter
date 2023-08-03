@@ -51,10 +51,22 @@ class UserController extends Controller
                 'regex:/[A-Z]/',
                 'regex:/[0-9]/',
                 //'regex:/[@$!%*#?&]/'],
-            ]
+            ],
+            'avatar' => 'required|image',
         ]);
 
-        User::create($request->post());
+        if ($request->hasFile('avatar')) {
+            $avatarName = time().'.'.$request->avatar->getClientOriginalExtension();
+            $request->avatar->move(public_path('avatar'), $avatarName);
+        }
+
+        $user = User::create($request->post());
+
+        if ($request->hasFile('avatar')) {
+            $user->avatar = $avatarName;
+            $user->save();
+        }
+
         return redirect()->route('user.index')->with('success','User has been created successfully.');
     }
 
@@ -79,9 +91,21 @@ class UserController extends Controller
                 'regex:/[0-9]/',
                 //'regex:/[@$!%*#?&]/'
             ],
+            'avatar' => 'nullable|image',
         ]);
 
+        if ($request->hasFile('avatar')) {
+            $avatarName = time().'.'.$request->avatar->getClientOriginalExtension();
+            $request->avatar->move(public_path('avatar'), $avatarName);
+        }
+
         $user->fill($request->post())->save();
+
+        if ($request->hasFile('avatar')) {
+            $user->avatar = $avatarName;
+            $user->save();
+        }
+
         return redirect()->route('user.index')->with('success','User has been updated successfully.');
     }
 

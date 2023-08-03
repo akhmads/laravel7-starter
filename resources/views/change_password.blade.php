@@ -29,21 +29,7 @@
             <h3 class="mb-3 text-center">Change Password</h3>
             <p class="fs-6 lh-1 text-secondary">Password must contain lowercase letters, uppercase letters and numbers.</p>
 
-            <!-- Alert Message -->
-            @if(session('success'))
-            <div class="alert alert-success alert-dismissible" role="alert">
-              {{ session('success') }}
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            @endif
-
-            @if(session('error'))
-            <div class="alert alert-danger alert-dismissible" role="alert">
-              {{ session('error') }}
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            @endif
-            <!-- /Alert Message -->
+            @livewire('alert')
 
             <form class="mb-3" action="{{ url('/change_password') }}" method="POST">
               @csrf

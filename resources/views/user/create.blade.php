@@ -5,7 +5,7 @@
 
 @section('content')
 
-<form action="{{ route('user.store') }}" method="POST">
+<form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
 @csrf
 <div class="row">
     <div class="col-md-6">
@@ -18,6 +18,7 @@
                 <x-input name="name" label="Name" value="" wrap="h" />
                 <x-input name="email" label="Email" type="email" value="" wrap="h" />
                 <x-input name="password" label="Password" type="password" value="" wrap="h" />
+                <x-input name="avatar" label="Avatar" type="file" value="" wrap="h" />
             </div>
         </div>
         <div class="text-center">

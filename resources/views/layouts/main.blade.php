@@ -11,6 +11,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+  @livewireStyles
+
   <!-- Core head -->
   @include('layouts.partials.head', ['vendor' => isset($vendor)?$vendor:[]])
   
@@ -57,6 +59,8 @@
     <div class="drag-target"></div>
     
   </div><!-- /Layout wrapper -->
+
+@livewireScripts
 
 <!-- Core script -->  
 @include('layouts.partials.script', ['vendor' => isset($vendor)?$vendor:[]])

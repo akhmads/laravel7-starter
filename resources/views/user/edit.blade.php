@@ -5,7 +5,7 @@
 
 @section('content')
 
-<form action="{{ route('user.update', $user->id) }}" method="POST">
+<form action="{{ route('user.update', $user->id) }}" method="POST" enctype="multipart/form-data">
 @csrf
 @method('PUT')
 <div class="row">
@@ -19,6 +19,7 @@
                 <x-input name="name" label="Name" value="{{ $user->name }}" wrap="h" />
                 <x-input name="email" label="Email" type="email" value="{{ $user->email }}" wrap="h" />
                 <x-input name="password" label="Password" type="password" value="" wrap="h" />
+                <x-input name="avatar" label="Avatar" type="file" value="{{ $user->avatar }}" wrap="h" image="true" />
             </div>
         </div>
         <div class="text-center">

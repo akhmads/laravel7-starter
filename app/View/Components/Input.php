@@ -49,11 +49,18 @@ class Input extends Component
     public $class;
 
     /**
+     * The input image type.
+     *
+     * @var string
+     */
+    public $image;
+
+    /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct( $name="", $value="", $type = "text", $wrap = "v", $label = "", $class = "" )
+    public function __construct( $name="", $value="", $type = "text", $wrap = "v", $label = "", $class = "", $image = false )
     {
         $this->name = $name;
         $this->value = $value;
@@ -61,6 +68,7 @@ class Input extends Component
         $this->wrap = $wrap;
         $this->label = $label;
         $this->class = $class;
+        $this->image = $image;
     }
 
     /**

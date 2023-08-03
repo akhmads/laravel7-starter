@@ -8,6 +8,9 @@
         <label class="col-sm-4 col-md-3 col-form-label">{{ $label }}</label>
         <div class="col-sm-8 col-md-9">
             <input type="{{ $type }}" name="{{ $name }}" value="{{ old($name,$value) }}" class="form-control @error($name) is-invalid @enderror {{ $class }}" {{ $attributes }} />
+            @if($image)
+            <img src="{{ url('avatar/'.$value) }}" alt="" class="mt-2" style="height:60px;">
+            @endif
             @error($name)
             <div class="text-danger mt-1 mb-1" style="font-size:85%;">{{ $message }}</div>
             @enderror

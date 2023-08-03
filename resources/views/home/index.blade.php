@@ -4,23 +4,18 @@
 @section('title', 'Home')
 
 @section('content')
+  
+  @livewire('alert')
 
-   <!-- Alert Message -->
-   @if(session('success'))
-   <div class="alert alert-success alert-dismissible" role="alert">
-     {{ session('success') }}
-     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-   </div>
-   @endif
+  <h1>Home</h1>
 
-   @if(session('error'))
-   <div class="alert alert-danger alert-dismissible" role="alert">
-     {{ session('error') }}
-     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-   </div>
-   @endif
-   <!-- /Alert Message -->
-
-   <h1>Home</h1>
+  <div class="row">
+    <div class="col-md-4">
+      @livewire('change-password')
+    </div>
+    <div class="col-md-4">
+      @livewire('auth.change-avatar')
+    </div>
+  </div>
    
 @endsection
