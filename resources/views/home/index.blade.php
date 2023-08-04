@@ -20,7 +20,15 @@
       @livewire('auth.change-password')
     </div>
     <div class="col-md-6">
-      @livewire('todo.todo-table')
+      <div class="card">
+        <div class="card-header d-flex align-items-center justify-content-between">
+            <h5 class="card-title m-0 me-2">Todo</h5>
+            @livewire('todo.todo-create')
+        </div>
+        <div class="card-body">
+          @livewire('todo.todo-table')
+        </div>
+      </div>
     </div>
   </div>
    

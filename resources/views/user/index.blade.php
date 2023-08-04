@@ -10,8 +10,8 @@
     <x-sweetalert title="Wow, Great Job !!!" text="{{ $message }}" icon="success" />
     @endif
     <div class="card">
-        <div class="card-header header-elements">
-            <h2 class="mt-3 me-4 mb-3 text-muted fw-light">User</h2>
+        <div class="card-header pb-0 d-flex align-items-center justify-content-between">
+            <h2 class="mt-0 mb-0 me-4 text-muted fw-light">User</h2>
             <div class="card-title-elements">
                 <a href="{{ route('user.create') }}" class="btn btn-primary"><i class="fa fa-plus me-2"></i>Add New</a>
             </div>
