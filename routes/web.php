@@ -58,3 +58,13 @@ Route::middleware(['auth'])->group(function(){
 Route::prefix('/admin')->group(function () {
     Route::get('/home', 'HomeController@index');
 });
+
+// Helpers
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:link');
+    dd(Artisan::output());
+});
+Route::get('/migrate', function () {
+    Artisan::call('migrate:fresh',['--seed' => true]);
+    dd(Artisan::output());
+});

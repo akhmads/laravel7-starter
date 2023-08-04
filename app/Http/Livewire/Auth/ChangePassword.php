@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Auth;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +14,7 @@ class ChangePassword extends Component
 
     public function render()
     {
-        return view('livewire.change-password');
+        return view('livewire.auth.change-password');
     }
 
     public function store()

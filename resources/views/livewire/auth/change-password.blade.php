@@ -7,7 +7,7 @@
             
             <livewire:alert :key="time().rand(0, 999)" />
 
-            <form class="mb-3" wire:submit.prevent="store">
+            <form wire:submit.prevent="store">
                 @csrf
                 <div class="mb-3">
                   <label for="current_password" class="form-label">Current Password</label>
@@ -36,7 +36,7 @@
   
                 <div class="mb-3 form-password-toggle">
                   <div class="d-flex justify-content-between">
-                    <label class="form-label" for="new_password_confirmation">New Password</label>
+                    <label class="form-label" for="new_password_confirmation">Re-Type New Password</label>
                   </div>
                   <div class="input-group input-group-merge">
                     <input type="password" class="form-control @error('new_password_confirmation') is-invalid @enderror" id="new_password_confirmation" wire:model="new_password_confirmation" />
@@ -49,7 +49,7 @@
                   @enderror
                 </div>
   
-                <div class="mb-3">
+                <div>
                   <button class="btn btn-primary d-grid w-100" type="submit">Change Password</button>
                 </div>
             </form>

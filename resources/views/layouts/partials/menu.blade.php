@@ -1,7 +1,7 @@
       <!-- Menu -->
       <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
         <div class="app-brand demo">
-          <a href="index.html" class="app-brand-link">
+          <a href="{{ url('/admin') }}" class="app-brand-link">
               <img src="{{ url('assets/img/logo.svg') }}" alt="Hypercode" style="height:50px;">
           </a>
 

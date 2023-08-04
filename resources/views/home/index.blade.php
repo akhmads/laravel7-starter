@@ -11,7 +11,7 @@
 
   <div class="row">
     <div class="col-md-4">
-      @livewire('change-password')
+      @livewire('auth.change-password')
     </div>
     <div class="col-md-4">
       @livewire('auth.change-avatar')
